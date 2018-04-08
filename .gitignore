@@ -24,3 +24,5 @@ hs_err_pid*
 .metadata
 RemoteSystemsTempFiles
 target/classes/META-INF/maven/local/APX/pom.properties
+.idea/
+APX.iml
