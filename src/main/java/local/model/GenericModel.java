@@ -12,10 +12,10 @@ import javax.validation.constraints.Size;
 public class GenericModel {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="name")
+	@Column(name="nome")
 	@NotNull(message="O campo nome não pode ser nulo")
 	@Size(min=4, max=30)
 	private String nome;
