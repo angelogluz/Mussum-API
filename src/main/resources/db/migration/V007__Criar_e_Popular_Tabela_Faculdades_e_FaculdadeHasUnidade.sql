@@ -5,7 +5,7 @@ CREATE TABLE faculdade(
   PRIMARY KEY (id)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
-  CREATE TABLE faculdade_has_unidade(
+  CREATE TABLE unidade_faculdade(
     faculdade_id INTEGER,
     unidade_id INTEGER,
     FOREIGN KEY (faculdade_id) REFERENCES faculdade(id),
@@ -18,8 +18,8 @@ INSERT INTO faculdade (nome, cnpj)
 INSERT INTO faculdade (nome, cnpj)
 VALUES ("FSPOA", "1233393123");
 
-INSERT INTO faculdade_has_unidade(faculdade_id, unidade_id)
+INSERT INTO unidade_faculdade(faculdade_id, unidade_id)
     VALUES (1,1);
 
-INSERT INTO faculdade_has_unidade(faculdade_id, unidade_id)
+INSERT INTO unidade_faculdade(faculdade_id, unidade_id)
 VALUES (1,2);
