@@ -1,13 +1,10 @@
 package local.controller;
 
-import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
-
+import local.repository.AulaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,49 +16,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import local.model.Unidade;
-import local.repository.UnidadeRepository;
+import local.model.Aula;
+import local.repository.FaculdadeRepository;
 
 @RestController
-@RequestMapping("/unidades")
-public class UnidadeController {
+@RequestMapping("/aulas")
+public class AulaController {
 
 	@Autowired
-	private UnidadeRepository unidadeDAO;
+	private AulaRepository aulaDAO;
 	
 	@GetMapping
-	public List<Unidade> listar(){
-		return unidadeDAO.findAll();
+	public List<Aula> listar(){
+		return aulaDAO.findAll();
 	}
 	
 	@PostMapping
 	//@ResponseStatus(code=HttpStatus.CREATED)
-	public ResponseEntity<Unidade> salvar(@RequestBody Unidade unidade, HttpServletResponse response) {
-		Unidade uc = unidadeDAO.save(unidade);
-		return new ResponseEntity<Unidade>(uc, HttpStatus.CREATED);
+	public ResponseEntity<Aula> salvar(@RequestBody Aula aula, HttpServletResponse response) {
+		Aula uc = aulaDAO.save(aula);
+		return new ResponseEntity<Aula>(uc, HttpStatus.CREATED);
 		
 		
 	}
 	
 	@GetMapping("/{id}")
-	public Unidade buscar (@PathVariable int id) {
-		return unidadeDAO.findById(id).get();
+	public Aula buscar (@PathVariable int id) {
+		return aulaDAO.findById(id).get();
 	}
 	
 	@DeleteMapping("/{id}")
 	public void remover(@PathVariable int id) {
-		Unidade uc = unidadeDAO.findById(id).get();
-		unidadeDAO.delete(uc);
+		Aula uc = aulaDAO.findById(id).get();
+		aulaDAO.delete(uc);
 	}
 
 	/**
 	@PostConstruct
 	public void popularDB() {
-		Unidade uc1 = new Unidade();
+		Aula uc1 = new Aula();
 		uc1.setNome("Algoritmos III");
-		Unidade uc2 = new Unidade();
+		Aula uc2 = new Aula();
 		uc2.setNome("Algoritmos I");
-		unidadeDAO.saveAll(Arrays.asList(uc1,uc2));
+		aulaDAO.saveAll(Arrays.asList(uc1,uc2));
 	}
 	*/
 }
