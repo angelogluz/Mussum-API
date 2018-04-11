@@ -23,6 +23,8 @@ hs_err_pid*
 .DS_Store
 .metadata
 RemoteSystemsTempFiles
+
+# Misc files
 target/classes/META-INF/maven/local/APX/pom.properties
 .idea/
-APX.iml
+target/*
