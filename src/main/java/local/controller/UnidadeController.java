@@ -1,10 +1,7 @@
 package local.controller;
 
-import java.net.URI;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -35,12 +32,10 @@ public class UnidadeController {
 	}
 	
 	@PostMapping
-	//@ResponseStatus(code=HttpStatus.CREATED)
 	public ResponseEntity<Unidade> salvar(@RequestBody Unidade unidade, HttpServletResponse response) {
 		Unidade uc = unidadeDAO.save(unidade);
 		return new ResponseEntity<Unidade>(uc, HttpStatus.CREATED);
-		
-		
+
 	}
 	
 	@GetMapping("/{id}")
@@ -54,14 +49,4 @@ public class UnidadeController {
 		unidadeDAO.delete(uc);
 	}
 
-	/**
-	@PostConstruct
-	public void popularDB() {
-		Unidade uc1 = new Unidade();
-		uc1.setNome("Algoritmos III");
-		Unidade uc2 = new Unidade();
-		uc2.setNome("Algoritmos I");
-		unidadeDAO.saveAll(Arrays.asList(uc1,uc2));
-	}
-	*/
 }

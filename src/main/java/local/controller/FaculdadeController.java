@@ -1,7 +1,6 @@
 package local.controller;
 
 
-import local.model.Aula;
 import local.model.Faculdade;
 import local.repository.FaculdadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +28,7 @@ public class FaculdadeController {
 	public ResponseEntity<Faculdade> salvar(@RequestBody Faculdade faculdade, HttpServletResponse response) {
 		Faculdade uc = faculdadeDAO.save(faculdade);
 		return new ResponseEntity<Faculdade>(uc, HttpStatus.CREATED);
-		
-		
+
 	}
 	
 	@GetMapping("/{id}")
@@ -44,14 +42,4 @@ public class FaculdadeController {
 		faculdadeDAO.delete(uc);
 	}
 
-	/**
-	@PostConstruct
-	public void popularDB() {
-		Aula uc1 = new Aula();
-		uc1.setNome("Algoritmos III");
-		Aula uc2 = new Aula();
-		uc2.setNome("Algoritmos I");
-		aulaDAO.saveAll(Arrays.asList(uc1,uc2));
-	}
-	*/
 }

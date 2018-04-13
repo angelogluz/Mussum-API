@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import local.model.Aula;
-import local.repository.FaculdadeRepository;
 
 @RestController
 @RequestMapping("/aulas")
@@ -32,14 +31,10 @@ public class AulaController {
 	}
 	
 	@PostMapping
-	//@ResponseStatus(code=HttpStatus.CREATED)
 	public ResponseEntity<Aula> salvar(@RequestBody Aula aula, HttpServletResponse response) {
 		Aula uc = aulaDAO.save(aula);
 		return new ResponseEntity<Aula>(uc, HttpStatus.CREATED);
-		
-		
 	}
-	
 	@GetMapping("/{id}")
 	public Aula buscar (@PathVariable int id) {
 		return aulaDAO.findById(id).get();
@@ -50,15 +45,4 @@ public class AulaController {
 		Aula uc = aulaDAO.findById(id).get();
 		aulaDAO.delete(uc);
 	}
-
-	/**
-	@PostConstruct
-	public void popularDB() {
-		Aula uc1 = new Aula();
-		uc1.setNome("Algoritmos III");
-		Aula uc2 = new Aula();
-		uc2.setNome("Algoritmos I");
-		aulaDAO.saveAll(Arrays.asList(uc1,uc2));
-	}
-	*/
 }
