@@ -20,6 +20,3 @@ VALUES ("FSPOA", "1233393123");
 
 INSERT INTO unidade_faculdade(faculdade_id, unidade_id)
     VALUES (1,1);
-
-INSERT INTO unidade_faculdade(faculdade_id, unidade_id)
-VALUES (1,2);
