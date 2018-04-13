@@ -1,10 +1,11 @@
 package local.repository;
 
-import local.model.Faculdade;
+import local.model.Curso;
+import local.model.Unidade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FaculdadeRepository extends JpaRepository<Faculdade, Integer>{
+public interface CursoRepository extends JpaRepository<Curso, Integer>{
 	
 }
