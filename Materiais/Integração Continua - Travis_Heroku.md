@@ -94,11 +94,11 @@ irá utilizar o ClearDB.
 
 ## Links importantes
 
-<link>https://travis-ci.org/</link>
+https://travis-ci.org/
 
-<link>https://www.heroku.com/</link>
+https://www.heroku.com/
 
-<link>https://docs.travis-ci.com/user/deployment/heroku/</link>
+https://docs.travis-ci.com/user/deployment/heroku/
 
 
 
