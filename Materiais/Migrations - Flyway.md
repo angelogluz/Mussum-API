@@ -8,7 +8,7 @@ auxilia a atualizar banco de dados em produção.
 * Resolve problemas específicos sem impacto no restante do banco
 * Entrega contínua
 * Cria uma tabela para controlar o schema de migrações <code> flyway_schema_history </code>
-* **Não é aconselhável** se deve editar uma migration criada - faz com que o checksun seja invalidado
+* **Não é aconselhável** editar uma migration criada - faz com que o checksun seja invalidado
 * O recomendado é começar as migrations em um banco de dados vazio
 
 ## Adicionando no Spring boot
@@ -58,6 +58,7 @@ associados ao nome que foi utilizado na criação do arquivo de migração.
 |        1       |    1    | Criar Tabela de Unidades |  SQL | V001__Criar_Tabela de_Unidades   | 1996767037 |     root     | 2018-02-04 22:23:00.0 |       320      |  true  |
 
 ### Se quiser popular a tabela de unidade, o que fazer?
+
 Em um primeiro momento, a ideia poderia ser editar a primeira migração e adicionar os <code> insert </code>, mas se fizermos
 isso, ao tentar executar a migração teremos um erro de checksun, pois será identificado uma alteração em uma migração já realizada.
 
