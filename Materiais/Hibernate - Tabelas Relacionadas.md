@@ -55,6 +55,53 @@ Note que está sendo indicado que muitas Aulas estão em uma única Unidade.
 Ainda é utilizada uma anotação do tipo <code> @JoinColumn </code>, que na propriedade <code>name</code> recebe o nome do campo
 no banco de dados que representa a FK.
 
+### ManyToMany
+Anotação utilizado para representar relacionamentos N-N.
+
+Ex.:
+```java
+@Entity
+@Table(name = "unidade")
+public class Unidade extends GenericModel{
+
+	@Column(name = "ativo")
+	private boolean ativo;
+
+	@ManyToMany (targetEntity = local.model.Faculdade.class)
+	private List<Faculdade> faculdade;
+
+	@OneToMany(mappedBy = "unidade")
+	private List<Aula> aula;
+
+
+	public List<Faculdade> getFaculdade() {
+		return faculdade;
+	}
+
+	public void setFaculdade(List<Faculdade> faculdade) {
+		this.faculdade = faculdade;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	@JsonIgnore
+	public List<Aula> getAula() {
+		return aula;
+	}
+
+	public void setAula(List<Aula> aula) {
+		this.aula = aula;
+	}
+}
+```
+
+Note que a anotação é colocada em uma Collection, e tem a propriedade <code>targetEntity</code>, que recebe a classe a qual
+está sendo representada no array.
+
 
 ## Links importantes
 
