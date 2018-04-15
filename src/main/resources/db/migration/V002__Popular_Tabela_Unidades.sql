@@ -1,12 +1,12 @@
 INSERT INTO unidade
     (ativo, nome)
     VALUES
-    (true, "Algoritmos e Programação III");
+    (1, "Algoritmos e Programação III");
 INSERT INTO unidade
     (ativo, nome)
     VALUES
-    (true, "Engenharia de Software II");
+    (1, "Engenharia de Software II");
 INSERT INTO unidade
     (ativo, nome)
     VALUES
-    (false, "Algoritmos e Programação II");
+    (0, "Algoritmos e Programação II");

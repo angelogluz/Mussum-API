@@ -12,19 +12,19 @@ public class Unidade extends GenericModel{
 	@Column(name = "ativo")
 	private boolean ativo;
 
-	@ManyToMany (targetEntity = local.model.Faculdade.class)
-	private List<Faculdade> faculdade;
+	@ManyToMany (targetEntity = local.model.Curso.class)
+	private List<Curso> curso;
 
 	@OneToMany(mappedBy = "unidade")
 	private List<Aula> aula;
 
 
-	public List<Faculdade> getFaculdade() {
-		return faculdade;
+	public List<Curso> getCurso() {
+		return curso;
 	}
 
-	public void setFaculdade(List<Faculdade> faculdade) {
-		this.faculdade = faculdade;
+	public void setCurso(List<Curso> curso) {
+		this.curso = curso;
 	}
 
 	public boolean isAtivo() {

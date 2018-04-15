@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("faculdades")
+@RequestMapping("cursos")
 public class CursoController {
 
 	@Autowired
