@@ -27,6 +27,12 @@ Password:
 Heroku create <nome da aplicação>
 ```
 
+Para garantir a execução da sua aplicação, execute o seguinte comando:
+
+```bash
+heroku ps:scale web=1
+```
+
 ### Conectando o Heroku com o Github
 
 Em <code>Settings/Deploy/Deployment method</code> troque de Heroku para Github.
@@ -46,9 +52,11 @@ ou
 Heroku addons:create jawsdb
 ```
 
+
 Realizada a instalação, em <code>Resources</code> já pode ser acessado o banco de dados ClearDB.
 
-Nas configurações do Heroku pegue as informações referente ao banco de dados a utilizar
+Nas configurações do Heroku pode ser vista a variável que contém as informações do banco.
+
 ```bash
 heroku config --app <nome do seu app no heroku>
 ```
@@ -82,6 +90,8 @@ do <code>application.properties</code>, e as propriedades especificadas nele sub
 <code>application.properties</code> quando alterarem uma mesma propriedade.
 
 Exemplo de arquivo de produção:
+
+<b> Por default o Heroku já aplica o DB criado sem necessidade desta configuração explícitando o banco. </b>
 
 ```
 spring.datasource.url= jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_a84f472d5366356?reconnect=true
