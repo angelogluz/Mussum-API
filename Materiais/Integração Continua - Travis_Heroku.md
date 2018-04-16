@@ -26,11 +26,7 @@ Navegar até o <b>diretório do projeto</b>, que já deverá estar versionado e 
 Heroku create <nome da aplicação>
 ```
 
-Para garantir a execução da sua aplicação, execute o seguinte comando:
 
-```bash
-heroku ps:scale web=1
-```
 
 ### Conectando o Heroku com o Github
 
@@ -124,6 +120,12 @@ Sendo assim, quando der o push para o github, automaticamente o deploy será rea
 git push origin master
 ```
 
+### Garantindo execução do app
+Para garantir a execução da sua aplicação, execute o seguinte comando:
+
+```bash
+heroku ps:scale web=1
+```
 
 ## Links importantes
 
