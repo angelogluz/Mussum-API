@@ -19,4 +19,4 @@ INSERT INTO curso (nome, data_fundacao)
 VALUES ("Redes de Computadores", "2006-03-01");
 
 INSERT INTO unidade_curso(unidade_id,curso_id)
-    VALUES (1,1);
+    VALUES (2,2);
