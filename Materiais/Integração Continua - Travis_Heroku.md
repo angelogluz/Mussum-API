@@ -6,11 +6,9 @@ Também é necessário criar uma conta em <link>https://travis-ci.org/</link>. A
 
 ## Heroku
 
-Seguir <b>Getting Started on Heroku with Java</b> conforme tutorial do site.
+Seguir <b>Getting Started on Heroku with Java</b> conforme tutorial do site, que em resumo é:
 
-<b> Resumo </b>
-
-Após instalar o Heroku CLI, as principais tarefas são:
+Após <b>instalar o Heroku CLI</b>, as principais tarefas são:
 
 ### Logar no Heroku
 
@@ -22,6 +20,7 @@ Password:
 ```
 
 ### Cria aplicação no Heroku e o remoto no git
+Navegar até o <b>diretório do projeto</b>, que já deverá estar versionado e criar a aplicação no heroku.
 
 ```bash
 Heroku create <nome da aplicação>
@@ -61,7 +60,7 @@ Nas configurações do Heroku pode ser vista a variável que contém as informa�
 heroku config --app <nome do seu app no heroku>
 ```
 
-## Criar profiles de produção e dev
+## [Opcional] Criar profiles de produção e dev
 
 Crie um arquivo chamada <code>Procfile</code> na raiz do projeto.
 
@@ -81,7 +80,7 @@ Para especificar que vamos rodar o perfil de produção do spring, precisamos ad
 web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/APX-0.0.1-SNAPSHOT.jar
 ```
 
-### Criando arquivo de configuração de produção
+### [Opcional] Criando arquivo de configuração de produção
 
 Neste momento, no nosso <code>application.properties</code> temos as configurações de acesso do nosso banco de dados <b>local</b>.
 
@@ -101,6 +100,30 @@ spring.datasource.password=d14d96e0
 
 Agora, quando rodar sua aplicação local, irá utilizar seu banco de dados local, quando rodar no heroku, 
 irá utilizar o ClearDB.
+
+## Fazendo deploy
+
+Após tudo configurado podemos fazer o deploy basicamente de duas formas:
+
+### Repositório do Heroku
+Quando criada a aplicação no heroku pelo <code>Heroku create</code>, um remote foi adicionado ao nosso git,
+apontando para um repositório no heroku. Se enviarmos para lá nosso push, o deploy será executado.
+
+```bash
+git push heroku master
+```
+
+### Repositório do github
+Se o <b> Deployment method </b> estiver sido alterado para o Github, conforme mostrado anteriormente, pode-se também,
+no mesmo lugar, selecionar o <b> deploy automático</b> e também que ele só seja realizado apenas de o projeto for
+<b>aprovado pelo CI (travis)</b>.
+
+Sendo assim, quando der o push para o github, automaticamente o deploy será realizado.
+
+```bash
+git push origin master
+```
+
 
 ## Links importantes
 
