@@ -3,6 +3,7 @@ package local.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,11 @@ public class UnidadeController {
 	public List<Unidade> listar(){
 		return unidadeDAO.findAll();
 	}
-	
+	/*
+	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
+	 */
 	@PostMapping
-	public ResponseEntity<Unidade> salvar(@RequestBody Unidade unidade, HttpServletResponse response) {
+	public ResponseEntity<Unidade> salvar(@Valid @RequestBody Unidade unidade, HttpServletResponse response) {
 		Unidade uc = unidadeDAO.save(unidade);
 		return new ResponseEntity<Unidade>(uc, HttpStatus.CREATED);
 

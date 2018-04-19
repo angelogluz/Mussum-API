@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,9 +23,12 @@ public class ConteudoController {
 	public List<Conteudo> listar(){
 		return conteudoDAO.findAll();
 	}
-	
+
+	/*
+	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
+	 */
 	@PostMapping
-	public ResponseEntity<Conteudo> salvar(@RequestBody Conteudo conteudo, HttpServletResponse response) {
+	public ResponseEntity<Conteudo> salvar(@Valid @RequestBody Conteudo conteudo, HttpServletResponse response) {
 		Conteudo uc = conteudoDAO.save(conteudo);
 		return new ResponseEntity<Conteudo>(uc, HttpStatus.CREATED);
 	}

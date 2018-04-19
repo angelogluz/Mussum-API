@@ -3,6 +3,7 @@ package local.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import local.repository.AulaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,11 @@ public class AulaController {
 	public List<Aula> listar(){
 		return aulaDAO.findAll();
 	}
-	
+	/*
+	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
+	 */
 	@PostMapping
-	public ResponseEntity<Aula> salvar(@RequestBody Aula aula, HttpServletResponse response) {
+	public ResponseEntity<Aula> salvar(@Valid @RequestBody Aula aula, HttpServletResponse response) {
 		Aula uc = aulaDAO.save(aula);
 		return new ResponseEntity<Aula>(uc, HttpStatus.CREATED);
 	}
