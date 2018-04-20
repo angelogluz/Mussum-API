@@ -11,7 +11,7 @@ Se você quer contribuir com o repositório, segue um guia rápido:
     * Seu código, no mínimo, deve realizar build com sucesso no Travis
   3. Faça Commit das suas alterações:
     * Utilize mensagens claras para documentar o seu commit
-    * Inclua um Emoji de acordo com o seu pull request. Veja o emoji adequado [Emojis](#Emojis)
+    * Inclua um Emoji de acordo com o seu pull request. Veja o emoji adequado [Emojis](#emojis)
   4. Realize Push para o seu fork e em seguida envie um pull request to the **master** branch
 
 ## Emojis
