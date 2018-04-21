@@ -35,6 +35,9 @@ funcionalidades básicas:
 * /unidades,methods=[POST]
 * /unidades/{id},methods=[DELETE]
 
+## Contribuição
+Veja [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Heroku
 A API está disponível em <link> https://mussumapi.herokuapp.com/ </link> seguido da rota
 especificada acima.
