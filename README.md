@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/angelogluz/algoritmosIII-SpringBoot-API.svg?branch=master)](https://travis-ci.org/angelogluz/algoritmosIII-SpringBoot-API)
+[![Build Status](https://travis-ci.org/angelogluz/Mussum-API.svg?branch=master)](https://travis-ci.org/angelogluz/Mussum-API)
 
 # Mussum API
 Projetos Spring Boot API utiliza/exemplifica os principais módulos do <b>Spring-boot 2.0.0</b>.
