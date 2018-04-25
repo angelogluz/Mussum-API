@@ -31,7 +31,7 @@ public class GenericModel implements Serializable{
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -67,5 +67,16 @@ public class GenericModel implements Serializable{
 		}
 		return true;
 	}
+        
+        @Override
+        public String toString(){
+            
+            String resposta = String.format("<%s> Id: %s - Nome %s", 
+                                            this.getClass().toString(),
+                                            this.getId(),
+                                            this.getNome());
+            
+            return resposta;
+        }
 	
 }
