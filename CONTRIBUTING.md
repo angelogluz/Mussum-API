@@ -16,7 +16,7 @@ Se você quer contribuir com o repositório, segue um guia rápido:
 
 ## Emojis
 
-Quando estiver criando ou atualizando a mensagem do  <code>pull request</code>, por favor, **comece** a mensagem do commit com o emoji que identifique o pull request. Emojis não devem ser utilizados no título do pull request.
+Quando estiver criando ou atualizando a mensagem do  <code>pull request</code>, por favor, **comece** a mensagem do commit com o emoji que identifique o pull request. Emojis não devem ser utilizados no título do pull request. Os emojis podem ser utilizados também nos <code>commits</code>
 
 * :new: `:new:` quando estiver adicionando uma nova funcionalidade
 * :bug: `:bug:` quando estiver corrigindo um bug
