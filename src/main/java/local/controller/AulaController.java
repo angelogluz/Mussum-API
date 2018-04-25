@@ -1,6 +1,7 @@
 package local.controller;
 
 
+import java.awt.print.Pageable;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import local.model.Aula;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/aulas")
@@ -26,10 +29,25 @@ public class AulaController {
 	@Autowired
 	private AulaRepository aulaDAO;
 	
-	@GetMapping
-	public List<Aula> listar(){
-		return aulaDAO.findAll();
-	}
+       
+        
+        @GetMapping
+        public List<Aula> listar(@RequestParam(value="limit", required=false) Integer limit){
+   
+            
+            if (limit == null){
+                
+                List<Aula> aulas = aulaDAO.findAll();
+                return aulas;
+                
+            } else {
+                
+                PageRequest limitPage = new PageRequest(0, limit);
+                List<Aula> aulas = aulaDAO.findLimitted(limitPage);
+                return aulas;
+            }
+                        
+        }
 	/*
 	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
 	 */

@@ -17,8 +17,11 @@ funcionalidades básicas:
 ### Aula
 * /aulas/{id},methods=[GET]
 * /aulas,methods=[GET]
+* /aulas?limit={limit}=[GET]
 * /aulas,methods=[POST]
 * /aulas/{id},methods=[DELETE]
+
+
 ### Conteúdo
 * /conteudos/{id},methods=[GET]
 * /conteudos,methods=[GET]
