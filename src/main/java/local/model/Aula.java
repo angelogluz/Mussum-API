@@ -6,6 +6,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Aula extends GenericModel{
+	
+	
 
 	@ManyToOne
 	@JoinColumn(name="unidade_id")
