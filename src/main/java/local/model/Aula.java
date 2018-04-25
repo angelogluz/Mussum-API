@@ -18,4 +18,10 @@ public class Aula extends GenericModel{
 	public void setUnidade(Unidade unidade) {
 		this.unidade = unidade;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Aula nome - "+getNome();
+	}
 }

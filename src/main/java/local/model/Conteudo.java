@@ -30,4 +30,10 @@ public class Conteudo extends GenericModel{
     public void setAula(Aula aula) {
         this.aula = aula;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Conteudo nome - "+getNome();
+    }
 }
