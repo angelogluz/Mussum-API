@@ -43,7 +43,7 @@ public class AulaController {
             } else {
                 
                 PageRequest limitPage = new PageRequest(0, limit);
-                List<Aula> aulas = aulaDAO.findLimitted(limitPage);
+                List<Aula> aulas = aulaDAO.findAll(limitPage).getContent();
                 return aulas;
             }
                         
