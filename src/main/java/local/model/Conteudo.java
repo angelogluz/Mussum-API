@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Conteudo extends GenericModel{
 
-    @Column(name = "url")
+    @Column(name = "url") //Definindo nome da Coluna no banco de dados
     private String url;
 
     @ManyToOne
@@ -29,5 +29,11 @@ public class Conteudo extends GenericModel{
 
     public void setAula(Aula aula) {
         this.aula = aula;
+    }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Conteudo nome - "+getNome();
     }
 }

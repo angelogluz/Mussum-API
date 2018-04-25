@@ -20,4 +20,10 @@ public class Curso extends GenericModel{
     public void setDataFundacao(LocalDate dataFundacao) {
         this.dataFundacao = dataFundacao;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Curso nome - "+getNome();
+    }
 }

@@ -51,5 +51,10 @@ public class UnidadeController {
 		Unidade uc = unidadeDAO.findById(id).get();
 		unidadeDAO.delete(uc);
 	}
+	
+	@GetMapping("/busca/{nome}")
+	public List<Unidade> buscaNome(@PathVariable("nome")String nome) {
+		return unidadeDAO.findByNomeIgnoreCase(nome);
+	}
 
 }
