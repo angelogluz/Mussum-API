@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("cursos")
+@RequestMapping("/cursos")
 public class CursoController {
 
 	@Autowired
@@ -45,5 +45,6 @@ public class CursoController {
 		Curso uc = cursoDAO.findById(id).get();
 		cursoDAO.delete(uc);
 	}
+
 
 }
