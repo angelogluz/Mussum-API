@@ -17,7 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+    import org.springframework.web.bind.MethodArgumentNotValidException;
+    import org.springframework.web.bind.annotation.ControllerAdvice;
     import org.springframework.web.bind.annotation.ExceptionHandler;
     import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -39,8 +40,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
             return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
         }
 
-
-
         @ExceptionHandler(value = {DataIntegrityViolationException.class })
         public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request) {
             String mensagemClienteUsuario = messageSource.getMessage("recurso.operacao-nao-permitida", null, LocaleContextHolder.getLocale());
@@ -48,6 +47,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
             List<Erro> erros = Arrays.asList(new Erro(mensagemClienteUsuario, mensagemClienteDesenvolvedor));
             return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
         }
+
+
         @ExceptionHandler(value = {NoSuchElementException.class })
         public ResponseEntity<Object> NoSuchElementException(NoSuchElementException ex, WebRequest request) {
             String mensagemClienteUsuario = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());

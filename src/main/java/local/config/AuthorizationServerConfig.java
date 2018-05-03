@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -20,14 +21,18 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
         @Autowired
         private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients.inMemory()
                     .withClient("root")
                     .secret("{noop}r00t")
                     .scopes("read", "write")
-                    .authorizedGrantTypes("password")
-                    .accessTokenValiditySeconds(1800);
+                    .authorizedGrantTypes("password","refresh_token") // Habilitado o refresh token
+                    .accessTokenValiditySeconds(60) // Tempo de expiração do token
+                    .refreshTokenValiditySeconds(3600 * 12); // Tempo de expiração para o refresh token
         }
 
 
@@ -36,7 +41,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
             endpoints
                     .tokenStore(tokenStore())
                     .accessTokenConverter(acessTokenConverter())
-                    .authenticationManager(authenticationManager);
+                    .reuseRefreshTokens(false) // Para não expirar o refresh token
+                    .authenticationManager(authenticationManager)
+                    .userDetailsService(userDetailsService);
         }
 
 
