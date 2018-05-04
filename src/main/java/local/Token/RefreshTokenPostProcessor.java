@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * Classe responsável por transitar o Refresh Token por o Cookie em vez de por requisição
+ * Classe responsável por transitar o Refresh Token por o Cookie
  */
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
