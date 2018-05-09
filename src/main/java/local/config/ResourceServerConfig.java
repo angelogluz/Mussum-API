@@ -17,14 +17,15 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        /*
-         * Não necessita estar autenticado para executar requisição em '/teste',
+    /*
+         * Não necessita estar autenticado para executar requisição em '/unidades',
          * mas precisa para executar qualquer outra requisição.
          * API REST não criará sessão no servidor, ou seja, não manterá estado de nada.
          * Cross site desabilitado -> javascript injection
          */
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 .antMatchers("/unidades").permitAll()
                 .anyRequest().authenticated()

@@ -31,7 +31,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
                     .secret("{noop}r00t")
                     .scopes("read", "write")
                     .authorizedGrantTypes("password","refresh_token") // Habilitado o refresh token
-                    .accessTokenValiditySeconds(60) // Tempo de expiração do token
+                    .accessTokenValiditySeconds(60*60) // Tempo de expiração do token
                     .refreshTokenValiditySeconds(3600 * 12); // Tempo de expiração para o refresh token
         }
 
@@ -58,6 +58,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
         public TokenStore tokenStore() {
             return new JwtTokenStore(acessTokenConverter());
         }
+
 
 
     }

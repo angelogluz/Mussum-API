@@ -29,7 +29,7 @@ public class CursoController {
 	 */
 	@PostMapping
 	//@ResponseStatus(code=HttpStatus.CREATED)
-	public ResponseEntity<Curso> salvar(@Valid @RequestBody Curso curso, HttpServletResponse response) {
+	public ResponseEntity<Curso> salvar(@Valid @RequestBody Curso curso) {
 		Curso uc = cursoDAO.save(curso);
 		return new ResponseEntity<Curso>(uc, HttpStatus.CREATED);
 
@@ -46,4 +46,10 @@ public class CursoController {
 		cursoDAO.delete(uc);
 	}
 
+	@PutMapping
+	public ResponseEntity<Curso> editar(@Valid @RequestBody Curso curso) {
+		Curso course = cursoDAO.save(curso);
+		return new ResponseEntity<Curso>(course, HttpStatus.OK);
+
+	}
 }

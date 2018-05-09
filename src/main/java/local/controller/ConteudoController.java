@@ -28,7 +28,7 @@ public class ConteudoController {
 	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
 	 */
 	@PostMapping
-	public ResponseEntity<Conteudo> salvar(@Valid @RequestBody Conteudo conteudo, HttpServletResponse response) {
+	public ResponseEntity<Conteudo> salvar(@Valid @RequestBody Conteudo conteudo) {
 		Conteudo uc = conteudoDAO.save(conteudo);
 		return new ResponseEntity<Conteudo>(uc, HttpStatus.CREATED);
 	}
@@ -41,5 +41,11 @@ public class ConteudoController {
 	public void remover(@PathVariable int id) {
 		Conteudo uc = conteudoDAO.findById(id).get();
 		conteudoDAO.delete(uc);
+	}
+	@PutMapping
+	public ResponseEntity<Conteudo> editar(@Valid @RequestBody Conteudo conteudo) {
+		Conteudo content = conteudoDAO.save(conteudo);
+		return new ResponseEntity<Conteudo>(content, HttpStatus.OK);
+
 	}
 }
