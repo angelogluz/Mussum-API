@@ -19,21 +19,8 @@ funcionalidades básicas.
 
 
 ## How to Start
-```bash
-$ git clone https://github.com/angelogluz/Mussum-API.git
-$ cd Mussum-API
-# <b>Inicialize o MySQL</b>
-# Com o MySQL inicializado, faça o build do projeto
-$ ./mvnw package
-$ npm install
-# watches your files and uses livereload by default run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-$ npm start
-# prod build, will output the production application in `dist`
-# the produced code can be deployed (rsynced) to a remote server
-$ npm run build
+Em construção...
 
-Inicialize o MySQL em sua máquina
-```
 ## Contribuição
 Veja [CONTRIBUTING.md](CONTRIBUTING.md).
 
