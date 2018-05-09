@@ -11,29 +11,12 @@ Projetos Spring Boot API utiliza/exemplifica os principais módulos do <b>Spring
 * Flyway
 
 ## Rotas
-A API segue, basicamente, a especificação rest em para nomear as suas rotas, realizando as 
-funcionalidades básicas:
+A API segue, basicamente, a especificação rest para nomear as suas rotas, realizando as 
+funcionalidades básicas.
 
-### Aula
-* /aulas/{id},methods=[GET]
-* /aulas,methods=[GET]
-* /aulas,methods=[POST]
-* /aulas/{id},methods=[DELETE]
-### Conteúdo
-* /conteudos/{id},methods=[GET]
-* /conteudos,methods=[GET]
-* /conteudos,methods=[POST]
-* /conteudos/{id},methods=[DELETE]
-### Curso
-* /cursos/{id},methods=[GET]
-* /cursos,methods=[GET]
-* /cursos,methods=[POST]
-* /cursos/{id},methods=[DELETE]
-### Unidade
-* /unidades/{id},methods=[GET]
-* /unidades,methods=[GET]
-* /unidades,methods=[POST]
-* /unidades/{id},methods=[DELETE]
+ [Documentação das rotas da API](https://documenter.getpostman.com/view/3419565/mussum-api/RW1Yr26P).
+
+
 
 ## How to Start
 ```bash
