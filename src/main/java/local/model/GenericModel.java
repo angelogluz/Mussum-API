@@ -18,7 +18,7 @@ public class GenericModel implements Serializable{
 	private int id;
 	
 	@Column(name="nome")
-	@NotNull(message="O campo nome não pode ser nulo")
+	@NotNull(message="O campo nome nao pode ser vazio!")
 	@Size(min=4, max=30)
 	private String nome;
 
