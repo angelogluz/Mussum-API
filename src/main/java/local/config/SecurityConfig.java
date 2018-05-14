@@ -43,12 +43,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Atualizado no Spring Security 5
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-/*
+/**
     @Bean
+    @Deprecated
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 */
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

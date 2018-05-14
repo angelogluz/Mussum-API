@@ -2,13 +2,12 @@ package local.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import local.model.Unidade;
@@ -22,6 +21,7 @@ public class UnidadeController {
 	private UnidadeRepository unidadeDAO;
 	
 	@GetMapping
+	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_UNIDADE')")
 	public List<Unidade> listar(){
 		return unidadeDAO.findAll();
 	}
@@ -29,6 +29,7 @@ public class UnidadeController {
 	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
 	 */
 	@PostMapping
+	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_UNIDADE')")
 	public ResponseEntity<Unidade> salvar(@Valid @RequestBody Unidade unidade) {
 		Unidade uc = unidadeDAO.save(unidade);
 		return new ResponseEntity<Unidade>(uc, HttpStatus.CREATED);
@@ -36,17 +37,20 @@ public class UnidadeController {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_UNIDADE')")
 	public Unidade buscar (@PathVariable int id) {
 		return unidadeDAO.findById(id).get();
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_REMOVER_UNIDADE')")
 	public void remover(@PathVariable int id) {
 		Unidade uc = unidadeDAO.findById(id).get();
 		unidadeDAO.delete(uc);
 	}
 
 	@PutMapping
+	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_UNIDADE')")
 	public ResponseEntity<Unidade> editar(@Valid @RequestBody Unidade unidade) {
 		Unidade uc = unidadeDAO.save(unidade);
 		return new ResponseEntity<Unidade>(uc, HttpStatus.OK);

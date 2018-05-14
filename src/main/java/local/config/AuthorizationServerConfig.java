@@ -28,8 +28,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("root")
-                .secret("{noop}r00t")
+                // Autenticação da aplicação
+                // Outro usuário poderia ser criado para uma aplicação mobile que acesse a API, por exemplo
+                .withClient("web")
+                .secret("{noop}w3b")
                 .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token") // Habilitado o refresh token
                 .accessTokenValiditySeconds(60 * 60) // Tempo de expiração do token
@@ -45,7 +47,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .reuseRefreshTokens(false) // Para não expirar o refresh token
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
-
     }
 
 

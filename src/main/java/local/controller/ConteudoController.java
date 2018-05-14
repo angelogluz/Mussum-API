@@ -6,6 +6,7 @@ import local.repository.ConteudoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ public class ConteudoController {
 	private ConteudoRepository conteudoDAO;
 	
 	@GetMapping
+	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CONTEUDO')")
 	public List<Conteudo> listar(){
 		return conteudoDAO.findAll();
 	}
@@ -28,6 +30,7 @@ public class ConteudoController {
 	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
 	 */
 	@PostMapping
+	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CONTEUDO')")
 	public ResponseEntity<Conteudo> salvar(@Valid @RequestBody Conteudo conteudo) {
 		Conteudo uc = conteudoDAO.save(conteudo);
 		return new ResponseEntity<Conteudo>(uc, HttpStatus.CREATED);
@@ -38,11 +41,13 @@ public class ConteudoController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CONTEUDO')")
 	public void remover(@PathVariable int id) {
 		Conteudo uc = conteudoDAO.findById(id).get();
 		conteudoDAO.delete(uc);
 	}
 	@PutMapping
+	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CONTEUDO')")
 	public ResponseEntity<Conteudo> editar(@Valid @RequestBody Conteudo conteudo) {
 		Conteudo content = conteudoDAO.save(conteudo);
 		return new ResponseEntity<Conteudo>(content, HttpStatus.OK);
