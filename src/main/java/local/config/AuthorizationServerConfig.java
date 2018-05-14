@@ -9,59 +9,57 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 
-    @Configuration
-    @EnableAuthorizationServer
-    public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+@Configuration
+@EnableAuthorizationServer
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-        @Autowired
-        private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserDetailsService userDetailsService;
 
 
-        @Override
-        public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-            clients.inMemory()
-                    .withClient("root")
-                    .secret("{noop}r00t")
-                    .scopes("read", "write")
-                    .authorizedGrantTypes("password","refresh_token") // Habilitado o refresh token
-                    .accessTokenValiditySeconds(60*60) // Tempo de expiração do token
-                    .refreshTokenValiditySeconds(3600 * 12); // Tempo de expiração para o refresh token
-        }
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient("root")
+                .secret("{noop}r00t")
+                .scopes("read", "write")
+                .authorizedGrantTypes("password", "refresh_token") // Habilitado o refresh token
+                .accessTokenValiditySeconds(60 * 60) // Tempo de expiração do token
+                .refreshTokenValiditySeconds(60 * 60 * 12); // Tempo de expiração para o refresh token
+    }
 
 
-        @Override
-        public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-            endpoints
-                    .tokenStore(tokenStore())
-                    .accessTokenConverter(acessTokenConverter())
-                    .reuseRefreshTokens(false) // Para não expirar o refresh token
-                    .authenticationManager(authenticationManager)
-                    .userDetailsService(userDetailsService);
-
-        }
-
-
-        @Bean
-        public JwtAccessTokenConverter acessTokenConverter() {
-            JwtAccessTokenConverter access = new JwtAccessTokenConverter();
-            access.setSigningKey("senac2018");
-            return access;
-        }
-
-        @Bean
-        public TokenStore tokenStore() {
-            return new JwtTokenStore(acessTokenConverter());
-        }
-
-
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints
+                .tokenStore(tokenStore())
+                .accessTokenConverter(acessTokenConverter())
+                .reuseRefreshTokens(false) // Para não expirar o refresh token
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService);
 
     }
+
+
+    @Bean
+    public JwtAccessTokenConverter acessTokenConverter() {
+        JwtAccessTokenConverter access = new JwtAccessTokenConverter();
+        access.setSigningKey("senac2018");
+        return access;
+    }
+
+    @Bean
+    public TokenStore tokenStore() {
+        return new JwtTokenStore(acessTokenConverter());
+    }
+
+
+}

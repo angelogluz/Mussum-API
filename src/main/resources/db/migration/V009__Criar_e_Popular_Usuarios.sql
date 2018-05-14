@@ -18,8 +18,9 @@ CREATE TABLE usuario_permissao (
 	FOREIGN KEY (id_permissao) REFERENCES permissao(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- {bcrypt} identifica o tipo do hash gerado
 INSERT INTO usuario (id, nome, email, senha) values (1, 'Administrador', 'angelogl@gmail.com', '{bcrypt}$2a$10$8Pc1KGsm3tR1x9vHpolQLuk8iGaNUzvNoubnt1mA7x4OPabXipaOW');
-INSERT INTO usuario (id, nome, email, senha) values (2, 'aluno', 'aluno@gmail.com', 'aluno');
+INSERT INTO usuario (id, nome, email, senha) values (2, 'aluno', 'aluno@gmail.com', '{bcrypt}$2a$10$tFgKQypde72jfwFVVLTXBelzFkZTkdK2B2elZDebW2KmRtYDXf21i');
 
 INSERT INTO permissao (id,descricao) values (1,'ROLE_CADASTRAR_AULA');
 INSERT INTO permissao (id,descricao) values (2,'ROLE_PESQUISAR_AULA');
