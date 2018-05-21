@@ -94,6 +94,14 @@
 			<version>3.7</version>
 		</dependency>
 
+		<!--
+		Dependência necessária para execução do APIProperty
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 	</dependencies>
 
