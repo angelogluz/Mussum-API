@@ -2,11 +2,11 @@
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cherry" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<style name="Title" forecolor="#FFFFFF" fontName="Verdana" fontSize="50" isBold="false"/>
-	<style name="SubTitle" forecolor="#CCCCCC" fontName="Verdana" fontSize="18" isBold="false"/>
-	<style name="Column header" forecolor="#666666" fontName="Verdana" fontSize="14" isBold="true"/>
-	<style name="Detail" mode="Transparent" fontName="Verdana"/>
-	<style name="Row" mode="Transparent" fontName="Verdana" pdfFontName="Times-Roman">
+	<style name="Title" forecolor="#FFFFFF" fontName="Times" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times"/>
+	<style name="Row" mode="Transparent" fontName="Times" pdfFontName="Times-Roman">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 			<style mode="Opaque" backcolor="#F0EFEF"/>
@@ -32,14 +32,14 @@
 				<staticText>
 					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
 					<textElement>
-						<font fontName="Verdana" size="40" isBold="false"/>
+						<font fontName="Times" size="40" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Mussum Nutela]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
 					<textElement>
-						<font fontName="Verdana" size="22" isBold="false"/>
+						<font fontName="Times" size="22" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Relatório de Usuários]]></text>
 				</staticText>
@@ -126,21 +126,21 @@
 				<textField evaluationTime="Report">
 					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Verdana" size="10" isBold="false"/>
+						<font fontName="Times" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Verdana" size="10" isBold="false"/>
+						<font fontName="Times" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Column header" x="2" y="1" width="248" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Verdana" size="10" isBold="false"/>
+						<font fontName="Times" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Criado em "+DATEFORMAT(TODAY(),"dd-MM-yyyy - HH:MM")]]></textFieldExpression>
 				</textField>
