@@ -119,6 +119,30 @@
 			<artifactId>jasperreports</artifactId>
 			<version>LATEST</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-functions</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/de.sven-jacobs/loremipsum -->
+		<dependency>
+			<groupId>de.sven-jacobs</groupId>
+			<artifactId>loremipsum</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.sven-jacobs</groupId>
+			<artifactId>loremipsum</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 	</dependencies>
 
@@ -132,4 +156,10 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>jr-ce-releases</id>
+			<url>http://jaspersoft.jfrog.io/jaspersoft/jr-ce-releases/</url>
+		</repository>
+	</repositories>
 </project>

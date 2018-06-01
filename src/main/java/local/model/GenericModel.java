@@ -1,18 +1,10 @@
 package local.model;
 
 
-import org.springframework.data.annotation.CreatedDate;
-
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,9 +20,10 @@ public class GenericModel implements Serializable{
 	@Size(min=4, max=30)
 	private String nome;
 
-	@CreatedDate
 
-	private LocalDateTime createdAt;
+
+
+	private LocalDate createdAt = LocalDate.now();
 
 	public int getId() {
 		return id;
@@ -48,11 +41,11 @@ public class GenericModel implements Serializable{
 		this.nome = nome;
 	}
 
-	public LocalDateTime getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 

@@ -148,8 +148,9 @@
     <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.icu:icu4j:57.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.jasperreports:jasperreports-fonts:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: net.sf.jasperreports:jasperreports-functions:6.6.0" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.9" level="project" />
-    <orderEntry type="library" name="Maven: net.sf.jasperreports:jasperreports-fonts:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: de.sven-jacobs:loremipsum:1.0" level="project" />
   </component>
 </module>
