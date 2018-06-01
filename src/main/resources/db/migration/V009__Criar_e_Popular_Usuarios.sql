@@ -37,6 +37,10 @@ INSERT INTO permissao (id,descricao) values (9,'ROLE_CADASTRAR_UNIDADE');
 INSERT INTO permissao (id,descricao) values (10,'ROLE_REMOVER_UNIDADE');
 INSERT INTO permissao (id,descricao) values (11,'ROLE_PESQUISAR_UNIDADE');
 
+INSERT INTO permissao (id,descricao) values (9,'ROLE_CADASTRAR_USUARIO');
+INSERT INTO permissao (id,descricao) values (10,'ROLE_REMOVER_USUARIO');
+INSERT INTO permissao (id,descricao) values (11,'ROLE_PESQUISAR_USUARIO');
+
 -- angelogl@gmail.com
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 1);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 2);
@@ -46,8 +50,12 @@ INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 5);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 6);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 7);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 8);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 9);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 10);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 11);
 
 -- aluno@gmail.com
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 2);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 5);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 8);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 11);

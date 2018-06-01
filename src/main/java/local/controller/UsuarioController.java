@@ -27,13 +27,12 @@ public class UsuarioController {
     private UsuarioRepository usuarioDAO;
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')") //TODO: Criar uma regra específica para o relatório
+    @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_USUARIO')")
     // Filtro desabilitado para testes
     // TODO: Migrar funcionalidade para uma Service
     public ResponseEntity<byte[]> buscarUsuarios(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate inicio,
                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fim) throws JRException {
         List<Usuario> usuarios =  usuarioDAO.findByCreatedAtBetween(inicio,fim); //TODO: Testar e corrigir Repository
-//        List<Usuario> usuarios =  usuarioDAO.findAll();
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("DATE_START", Date.valueOf(inicio));
         parametros.put("DATE_END", Date.valueOf(fim));
