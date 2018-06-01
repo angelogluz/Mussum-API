@@ -37,9 +37,13 @@ INSERT INTO permissao (id,descricao) values (9,'ROLE_CADASTRAR_UNIDADE');
 INSERT INTO permissao (id,descricao) values (10,'ROLE_REMOVER_UNIDADE');
 INSERT INTO permissao (id,descricao) values (11,'ROLE_PESQUISAR_UNIDADE');
 
-INSERT INTO permissao (id,descricao) values (9,'ROLE_CADASTRAR_USUARIO');
-INSERT INTO permissao (id,descricao) values (10,'ROLE_REMOVER_USUARIO');
-INSERT INTO permissao (id,descricao) values (11,'ROLE_PESQUISAR_USUARIO');
+INSERT INTO permissao (id,descricao) values (12,'ROLE_CADASTRAR_USUARIO');
+INSERT INTO permissao (id,descricao) values (13,'ROLE_REMOVER_USUARIO');
+INSERT INTO permissao (id,descricao) values (14,'ROLE_PESQUISAR_USUARIO');
+
+INSERT INTO permissao (id,descricao) values (15,'ROLE_PESQUISAR');
+INSERT INTO permissao (id,descricao) values (16,'ROLE_CADASTRAR');
+INSERT INTO permissao (id,descricao) values (17,'ROLE_REMOVER');
 
 -- angelogl@gmail.com
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 1);
@@ -53,9 +57,17 @@ INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 8);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 9);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 10);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 11);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 12);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 13);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 14);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 15);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 16);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 17);
 
 -- aluno@gmail.com
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 2);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 5);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 8);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 11);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 14);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2, 15);
