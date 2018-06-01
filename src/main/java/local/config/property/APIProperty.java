@@ -3,7 +3,7 @@ package local.config.property;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("mussumapi")
-public class APIPropertyy {
+public class APIProperty {
 
     private String originPermitida = "http://localhost:8080";
 

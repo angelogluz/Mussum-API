@@ -12,7 +12,7 @@ public class Unidade extends GenericModel{
 	@Column(name = "ativo")
 	private boolean ativo;
 
-	@ManyToMany (targetEntity = local.model.Curso.class)
+	@ManyToMany (targetEntity = Curso.class)
 	private List<Curso> curso;
 
 	@OneToMany(mappedBy = "unidade")
