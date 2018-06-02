@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
     Optional<Usuario> findByEmail(String email);
     List<Usuario> findByCreatedAtBetween(LocalDate dataInicial, LocalDate dataFinal);
+    List<Usuario> findByNomeContains(String parte);
 }
