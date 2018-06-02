@@ -152,5 +152,6 @@
     <orderEntry type="library" name="Maven: net.sf.jasperreports:jasperreports-functions:6.6.0" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Maven: de.sven-jacobs:loremipsum:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.3.11.RELEASE" level="project" />
   </component>
 </module>

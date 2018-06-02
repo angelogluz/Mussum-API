@@ -87,7 +87,7 @@ public class UsuarioController {
 
     /**
      * Todos os dias às 23:59:00 remove o leroro do banco de dados
-     * cron 0 59 23 * * * = segundo minuto dia mes ano - <b>*</b> representa todos
+     * cron 0 59 23 * * * = segundo minuto dia mes dia da semana - <b>*</b> representa todos
      */
     @Scheduled(cron = "0 59 23 * * *")
     public void removeTodoLeroro(){
