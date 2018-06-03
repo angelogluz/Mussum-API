@@ -25,8 +25,8 @@ public class Mail {
                 "Notificação de usuários removidos",
                 "Olá, <br/><br/> "+quantidade+ " " +
                         "usuários foram removidos " +
-                        "<br/>" +
-                        "Att,<br/><br/>" +
+                        "<br/><br/>" +
+                        "Att,<br/>" +
                         "Equipe Mussum Nutela");
     }
 
