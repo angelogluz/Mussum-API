@@ -14,7 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.PostConstruct;
 import java.io.InputStream;
 import java.sql.Date;
@@ -27,6 +31,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioDAO;
+    @Autowired
+    private Mail mail;
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_USUARIO')")
@@ -34,7 +40,7 @@ public class UsuarioController {
     // TODO: Migrar funcionalidade para uma Service
     public ResponseEntity<byte[]> buscarUsuarios(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate inicio,
                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fim) throws JRException {
-        List<Usuario> usuarios =  usuarioDAO.findByCreatedAtBetween(inicio,fim); //TODO: Testar e corrigir Repository
+        List<Usuario> usuarios = usuarioDAO.findByCreatedAtBetween(inicio, fim); //TODO: Testar e corrigir Repository
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("DATE_START", Date.valueOf(inicio));
         parametros.put("DATE_END", Date.valueOf(fim));
@@ -45,7 +51,7 @@ public class UsuarioController {
         JasperReport is
                 = JasperCompileManager.compileReport(x);
 
-        JasperPrint print = JasperFillManager.fillReport(is,parametros, new JRBeanCollectionDataSource(usuarios));
+        JasperPrint print = JasperFillManager.fillReport(is, parametros, new JRBeanCollectionDataSource(usuarios));
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
@@ -58,14 +64,14 @@ public class UsuarioController {
      * Anotação @PostConstruct faz com que o método seja executado antes de qualquer coisa
      */
     @PostConstruct
-    public void lerolero(){
+    public void lerolero() {
         LoremIpsum ipsum = new LoremIpsum();
         List<Usuario> usuarios = new ArrayList<>();
         String words = ipsum.getParagraphs(5);
         for (int i = 0; i < 3; i++) {
             Usuario u = new Usuario();
-            u.setEmail(ipsum.getWords(1,new Random().nextInt(50))+"@gmail.com");
-            u.setNome(ipsum.getWords(3,new Random().nextInt(50)));
+            u.setEmail(ipsum.getWords(1, new Random().nextInt(50)) + "@gmail.com");
+            u.setNome("Lero" + ipsum.getWords(3, new Random().nextInt(50)));
             u.setSenha(PasswordGenerator.generate(ipsum.getWords(1)));
             usuarios.add(u);
         }
@@ -76,12 +82,12 @@ public class UsuarioController {
      * A cada 5 minutos registra um novo usuário no sistema
      */
     @Scheduled(fixedDelay = 1000 * 60 * 5)
-    public void adicionaLeroleroPeriodicamente(){
+    public void adicionaLeroleroPeriodicamente() {
         System.out.println("Registrando um novo usuário");
         LoremIpsum ipsum = new LoremIpsum();
         Usuario u = new Usuario();
-        u.setEmail(ipsum.getWords(1,new Random().nextInt(50))+"@gmail.com");
-        u.setNome("lero"+ipsum.getWords(3,new Random().nextInt(50)));
+        u.setEmail(ipsum.getWords(1, new Random().nextInt(50)) + "@gmail.com");
+        u.setNome("Lero" + ipsum.getWords(3, new Random().nextInt(50)));
         u.setSenha(PasswordGenerator.generate(ipsum.getWords(1)));
         usuarioDAO.save(u);
     }
@@ -92,16 +98,13 @@ public class UsuarioController {
      */
     @Scheduled(cron = "0 59 23 * * *")
     @Scheduled(cron = "0 59 11 * * *")
-    public void removeTodoLeroro(){
+    public void removeTodoLeroro() {
         System.out.println("Todos usuários foram removidos...ou não");
         List<Usuario> usuarios = usuarioDAO.findByNomeContains("lero");
         usuarioDAO.deleteInBatch(usuarios);
         mail.notificaRemocaoDeUsuarios(usuarios.size());
 
     }
-
-    @Autowired
-    private Mail mail;
 
 
 }

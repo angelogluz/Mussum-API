@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Conteudo extends GenericModel{
+public class Conteudo extends GenericModel {
 
     @Column(name = "url")
     private String url;

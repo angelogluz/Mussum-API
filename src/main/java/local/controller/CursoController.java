@@ -16,43 +16,43 @@ import java.util.List;
 @RequestMapping("cursos")
 public class CursoController {
 
-	@Autowired
-	private CursoRepository cursoDAO;
-	
-	@GetMapping
-	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
-	public List<Curso> listar(){
-		return cursoDAO.findAll();
-	}
+    @Autowired
+    private CursoRepository cursoDAO;
 
-	/*
-	O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
-	 */
-	@PostMapping
-	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CURSO')")
-	//@ResponseStatus(code=HttpStatus.CREATED)
-	public ResponseEntity<Curso> salvar(@Valid @RequestBody Curso curso) {
-		Curso uc = cursoDAO.save(curso);
-		return new ResponseEntity<Curso>(uc, HttpStatus.CREATED);
-	}
-	
-	@GetMapping("/{id}")
-	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
-	public Curso buscar (@PathVariable int id) {
-		return cursoDAO.findById(id).get();
-	}
-	
-	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
-	public void remover(@PathVariable int id) {
-		Curso uc = cursoDAO.findById(id).get();
-		cursoDAO.delete(uc);
-	}
+    @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
+    public List<Curso> listar() {
+        return cursoDAO.findAll();
+    }
 
-	@PutMapping
-	@PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CURSO')")
-	public ResponseEntity<Curso> editar(@Valid @RequestBody Curso curso) {
-		Curso course = cursoDAO.save(curso);
-		return new ResponseEntity<Curso>(course, HttpStatus.OK);
-	}
+    /*
+    O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
+     */
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CURSO')")
+    //@ResponseStatus(code=HttpStatus.CREATED)
+    public ResponseEntity<Curso> salvar(@Valid @RequestBody Curso curso) {
+        Curso uc = cursoDAO.save(curso);
+        return new ResponseEntity<Curso>(uc, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
+    public Curso buscar(@PathVariable int id) {
+        return cursoDAO.findById(id).get();
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_CURSO')")
+    public void remover(@PathVariable int id) {
+        Curso uc = cursoDAO.findById(id).get();
+        cursoDAO.delete(uc);
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAnyRole('ROLE_CADASTRAR_CURSO')")
+    public ResponseEntity<Curso> editar(@Valid @RequestBody Curso curso) {
+        Curso course = cursoDAO.save(curso);
+        return new ResponseEntity<Curso>(course, HttpStatus.OK);
+    }
 }

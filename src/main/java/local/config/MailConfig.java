@@ -16,13 +16,13 @@ public class MailConfig {
     private APIProperty property;
 
     @Bean
-    public JavaMailSender mailSender(){
+    public JavaMailSender mailSender() {
 
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", "smtp");
-        properties.put("mail.smtp.auth",true);
-        properties.put("mail.smtp.starttls.enable",true);
-        properties.put("mail.smtp.connectiontimeout",1000*10);
+        properties.put("mail.smtp.auth", true);
+        properties.put("mail.smtp.starttls.enable", true);
+        properties.put("mail.smtp.connectiontimeout", 1000 * 10);
 
         JavaMailSenderImpl mail = new JavaMailSenderImpl();
         mail.setJavaMailProperties(properties);

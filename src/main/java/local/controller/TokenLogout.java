@@ -19,11 +19,11 @@ public class TokenLogout {
     private APIProperty property;
 
     @DeleteMapping("/logout")
-    public void logout (HttpServletRequest req, HttpServletResponse res){
+    public void logout(HttpServletRequest req, HttpServletResponse res) {
         Cookie cookie = new Cookie("refreshToken", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(property.getSeguranca().isEnableHttps());
-        cookie.setPath(req.getContextPath()+"/oauth/token");
+        cookie.setPath(req.getContextPath() + "/oauth/token");
         cookie.setMaxAge(0);
 
         res.addCookie(cookie);

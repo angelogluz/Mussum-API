@@ -34,7 +34,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret("{noop}w3b")
                 .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token") // Habilitado o refresh token
-                .accessTokenValiditySeconds(60*24) // Tempo de expiração do token
+                .accessTokenValiditySeconds(60 * 24) // Tempo de expiração do token
                 .refreshTokenValiditySeconds(60 * 60 * 12); // Tempo de expiração para o refresh token
     }
 

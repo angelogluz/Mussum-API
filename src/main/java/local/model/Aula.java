@@ -5,16 +5,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Aula extends GenericModel{
+public class Aula extends GenericModel {
 
-	@ManyToOne
-	@JoinColumn(name="unidade_id")
-	private Unidade unidade;
-	
-	public Unidade getUnidade() {
-		return unidade;
-	}
-	public void setUnidade(Unidade unidade) {
-		this.unidade = unidade;
-	}
+    @ManyToOne
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidade;
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
+    }
 }

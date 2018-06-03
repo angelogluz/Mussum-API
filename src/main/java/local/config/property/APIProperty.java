@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("mussumapi")
 public class APIProperty {
 
+    private final Seguranca seguranca = new Seguranca();
+    private final Mail mail = new Mail();
     private String originPermitida = "http://localhost:8080";
 
     public String getOriginPermitida() {
@@ -14,10 +16,6 @@ public class APIProperty {
     public void setOriginPermitida(String originPermitida) {
         this.originPermitida = originPermitida;
     }
-
-    private final Seguranca seguranca = new Seguranca();
-
-    private final Mail mail = new Mail();
 
     public Mail getMail() {
         return mail;
@@ -30,7 +28,7 @@ public class APIProperty {
     /**
      * Configurações de propriedades de segurança em perfis diferentes
      */
-    public static class Seguranca{
+    public static class Seguranca {
         private boolean enableHttps;
 
         public boolean isEnableHttps() {
@@ -42,7 +40,7 @@ public class APIProperty {
         }
     }
 
-    public static class Mail{
+    public static class Mail {
         private String host;
         private int port;
         private String username;

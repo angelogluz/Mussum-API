@@ -1,11 +1,10 @@
 package local.model;
 
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.*;
-
 @Entity
-public class Usuario extends GenericModel{
+public class Usuario extends GenericModel {
 
 
     private String email;
