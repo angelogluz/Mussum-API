@@ -21,12 +21,15 @@ public class MailConfig {
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", "smtp");
         properties.put("mail.smtp.auth",true);
-        properties.put("mail.starttls",true);
+        properties.put("mail.smtp.starttls.enable",true);
         properties.put("mail.smtp.connectiontimeout",1000*10);
 
         JavaMailSenderImpl mail = new JavaMailSenderImpl();
         mail.setJavaMailProperties(properties);
-
+        mail.setHost(property.getMail().getHost());
+        mail.setPort(property.getMail().getPort());
+        mail.setUsername(property.getMail().getUsername());
+        mail.setPassword(property.getMail().getPassword());
         return mail;
     }
 

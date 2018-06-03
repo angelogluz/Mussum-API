@@ -1,6 +1,7 @@
 package local.controller;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
+import local.mail.Mail;
 import local.model.Usuario;
 import local.repository.UsuarioRepository;
 import local.util.PasswordGenerator;
@@ -86,14 +87,21 @@ public class UsuarioController {
     }
 
     /**
-     * Todos os dias às 23:59:00 remove o leroro do banco de dados
+     * Todos os dias às 11:59:00 e 23:59:00 remove o leroro do banco de dados
      * cron 0 59 23 * * * = segundo minuto dia mes dia da semana - <b>*</b> representa todos
      */
     @Scheduled(cron = "0 59 23 * * *")
+    @Scheduled(cron = "0 59 11 * * *")
     public void removeTodoLeroro(){
         System.out.println("Todos usuários foram removidos...ou não");
         List<Usuario> usuarios = usuarioDAO.findByNomeContains("lero");
         usuarioDAO.deleteInBatch(usuarios);
+        mail.notificaRemocaoDeUsuarios(usuarios.size());
 
     }
+
+    @Autowired
+    private Mail mail;
+
+
 }
