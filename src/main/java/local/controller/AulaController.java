@@ -19,14 +19,20 @@ public class AulaController {
     @Autowired
     private AulaRepository aulaDAO;
 
+    /**
+     * Metódo para pesquisar aulas que contenham o mesmo nome
+     * @return  retorna uma lista de todas as aulas com o nome pesquisado
+     */
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_AULA')")
     public List<Aula> listar() {
         return aulaDAO.findAll();
     }
 
-    /*
-    O @Valid ativa a validação especificada na model, sem "estourar" erro em servidor.
+    /**
+     * Metódo que busca salvar uma aula no banco de dados
+     * @param aula objeto do tipo aula
+     * @return retorna uma entidade no status created
      */
     @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_CADASTRAR_AULA')")
@@ -34,20 +40,31 @@ public class AulaController {
         Aula uc = aulaDAO.save(aula);
         return new ResponseEntity<Aula>(uc, HttpStatus.CREATED);
     }
-
+/**
+ * Método que busca uma aula especifica
+ * @param id id do objeto do tipo aula
+ * @return retorna a aula que contenha o id especifico
+ */
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ROLE_PESQUISAR_AULA')")
     public Aula buscar(@PathVariable int id) {
         return aulaDAO.findById(id).get();
     }
-
+/**
+ * Método que deleta uma aula especifica
+ * @param id id do objeto do tipo aula
+ */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ROLE_REMOVER_AULA')")
     public void remover(@PathVariable int id) {
         Aula uc = aulaDAO.findById(id).get();
         aulaDAO.delete(uc);
     }
-
+/**
+ * Método que permite a edição de uma aula
+ * @param aula objeto do tipo aula
+ * @return retorna uma nova entidade com status ok
+ */
     @PutMapping
     @PreAuthorize("hasAnyRole('ROLE_CADASTRAR_AULA')")
     public ResponseEntity<Aula> editar(@Valid @RequestBody Aula aula) {
