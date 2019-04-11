@@ -1,14 +1,11 @@
-# Integração Contínua - Travis-CI
+# Deploy no Heroku e Integração Contínua com Travis-CI
 
-Primeiro passo é criar um arquivo <code>.travis.yml</code> na raiz do projeto.
-
-Também é necessário criar uma conta em <link>https://travis-ci.org/</link>. Ao criar a conta, pode-se logar com o GitHub e já autorizar o travis no repositório.
 
 ## Heroku
 
 Seguir <b>Getting Started on Heroku with Java</b> conforme tutorial do site, que em resumo é:
 
-Após <b>instalar o Heroku CLI</b>, as principais tarefas são:
+Primeiro de tudo <b>instalar o Heroku CLI</b>, e em seguida executar as seguintes tarefas:
 
 ### Logar no Heroku
 
@@ -26,37 +23,42 @@ Navegar até o <b>diretório do projeto</b>, que já deverá estar versionado e 
 Heroku create <nome da aplicação>
 ```
 
+### Enviando código para o Heroku
 
+Observe que ao usar o <code> heroku create </code> uma branch chamada <code> heroku </code> foi criada no seu repositório local.
 
-### Conectando o Heroku com o Github
+Com isso é possível apenas fazer um  <code> push </code> neste repositório.
 
-Em <code>Settings/Deploy/Deployment method</code> troque de Heroku para Github.
+```bash
+git push heroku master
+```
 
 ### Adicionando conexão com banco de dados MySQL
 
 <b>ATENÇÃO!</b> Será necessário inserir um cartão de crédito válido para adicionar o addon.
 
-Adicione o addon para trabalhar com o ClearDB MySQL em <link>https://elements.heroku.com/</link>, ou pelo terminal com o 
+Adicione o addon para trabalhar com o JawsDB MySQL em <link>https://elements.heroku.com/</link>, ou pelo terminal com o 
 comando a seguir:
 
-```bash
-Heroku addons:create cleardb
-```
-ou
 ```bash
 Heroku addons:create jawsdb
 ```
 
+<b> No sistema web do Heroku já pode clicar em "Open App". Se nenhum problema ocorreu, sua API já está disponível para acesso. Seja feliz. :) </b>
 
-Realizada a instalação, em <code>Resources</code> já pode ser acessado o banco de dados ClearDB.
+## Travis
 
-Nas configurações do Heroku pode ser vista a variável que contém as informações do banco.
+Se liga! Só funcionará para repositórios do Github
 
-```bash
-heroku config --app <nome do seu app no heroku>
-```
+Primeiro passo é criar um arquivo <code>.travis.yml</code> na raiz do projeto.
 
-## [Opcional] Criar profiles de produção e dev
+Também é necessário criar uma conta em <link>https://travis-ci.org/</link>. Ao criar a conta, pode-se logar com o GitHub e já autorizar o travis no repositório.
+
+### Vincule seu repositório com o github
+
+É possível também vincular o heroku com a conta do gitlab. Para isso vá em <code>Settings/Deploy/Deployment method</code> troque de Heroku para Github.
+
+## [Opcional Heroku] Criar profiles de produção e dev
 
 Crie um arquivo chamada <code>Procfile</code> na raiz do projeto.
 
@@ -76,7 +78,7 @@ Para especificar que vamos rodar o perfil de produção do spring, precisamos ad
 web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/APX-0.0.1-SNAPSHOT.jar
 ```
 
-### [Opcional] Criando arquivo de configuração de produção
+### [Opcional Heroku] Criando arquivo de configuração de produção
 
 Neste momento, no nosso <code>application.properties</code> temos as configurações de acesso do nosso banco de dados <b>local</b>.
 
@@ -97,30 +99,7 @@ spring.datasource.password=d14d96e0
 Agora, quando rodar sua aplicação local, irá utilizar seu banco de dados local, quando rodar no heroku, 
 irá utilizar o ClearDB.
 
-## Fazendo deploy
-
-Após tudo configurado podemos fazer o deploy basicamente de duas formas:
-
-### Repositório do Heroku
-Quando criada a aplicação no heroku pelo <code>Heroku create</code>, um remote foi adicionado ao nosso git,
-apontando para um repositório no heroku. Se enviarmos para lá nosso push, o deploy será executado.
-
-```bash
-git push heroku master
-```
-
-### Repositório do github
-Se o <b> Deployment method </b> estiver sido alterado para o Github, conforme mostrado anteriormente, pode-se também,
-no mesmo lugar, selecionar o <b> deploy automático</b> e também que ele só seja realizado apenas de o projeto for
-<b>aprovado pelo CI (travis)</b>.
-
-Sendo assim, quando der o push para o github, automaticamente o deploy será realizado.
-
-```bash
-git push origin master
-```
-
-### Garantindo execução do app
+### [Caso tenha tinha algum problema]Garantindo execução do app
 Para garantir a execução da sua aplicação, execute o seguinte comando:
 
 ```bash
