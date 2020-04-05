@@ -10,6 +10,7 @@ Projeto Spring Boot API utiliza/exemplifica os principais módulos do <b>Spring-
 * MySQL
 * Flyway
 * Security
+* XYZ
 
 ## Principais Features
 * Migrations para database
